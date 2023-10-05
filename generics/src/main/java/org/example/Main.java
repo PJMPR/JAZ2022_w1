@@ -1,23 +1,10 @@
 package org.example;
 
+import org.example.model.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
-class Animal implements IMakeNoise {
-    public void makeNoise(){}
-}
-class Dog extends Animal{}
-class Cat extends Animal{}
-class Terrier extends Dog{}
-
-class Manx extends Cat{}
-
-class Audio implements IMakeNoise {
-    @Override
-    public void makeNoise() {
-
-    }
-}
 
 public class Main {
 
@@ -33,24 +20,29 @@ public class Main {
         /**
          * spójrzmy na zachowanie tablicy
          */
-        Dog[] dogs = {new Dog(), new Dog()};
+        //Dog[] dogs = {new Dog(), new Dog()};
 
-        List list = new ArrayList();
-        list.add(1);
-        list.add(new Dog());
-        list.add(new Cat());
-        list.add("napis");
-
-        for (Object obj :
-                list) {
-            ((Dog) obj).makeNoise();
-        }
         //addAnimal(dogs);
+
+        /**
+         *
+         */
+
+//        List list = new ArrayList();
+//        list.add(1);
+//        list.add(new Dog());
+//        list.add(new Cat());
+//        list.add("napis");
+//
+//        for (Object obj :
+//                list) {
+//                ((Dog) obj).makeNoise();
+//        }
 
         /**
          * polimorfizm jest ok dla typu bazowego, w sensie ArrayLista jest implementacją Listy
          */
-        List<Cat> cats = new ArrayList<Cat>();
+//        List<Cat> cats = new ArrayList<Cat>();
 
         /**
          * ale to przestanie działać gdy parametr Typu nie jest zgodny:
@@ -62,32 +54,32 @@ public class Main {
          * przy deklaracji jak i przy inincjalizacji,
          * można stosować krótszy zapis, stosując parametr typu tylko przy deklaracji
          */
-        List<Cat> otherCats = new ArrayList<>();
+//        List<Cat> otherCats = new ArrayList<>();
 
         /**
          * kompilator zauważy błąd,
          * gdy jest niezgodność parametrów typu,
          * nawet przy próbie wywoływania metod
          */
-        //addAnimal(cats);
+//        addAnimal(cats);
 
         /* WILDCARDS */
 
         /**
          * Wildcardy wprowadzają większą swobodę wprowadzania parametrów typu
          */
-        List<?> myList = new ArrayList<Animal>();
-        myList = new ArrayList<Item>();
-        myList = new ArrayList<Object>();
-        myList = new ArrayList<Integer>();
-        myList = new ArrayList<String>();
-        myList = new ArrayList<>();
+//        List<?> myList = new ArrayList<Animal>();
+//        myList = new ArrayList<Object>();
+//        myList = new ArrayList<Integer>();
+//        myList = new ArrayList<String>();
+//        myList = new ArrayList<>();
+
         /**
          * Ale czy aby napewno...?
          * spróbuj dodać jakiś element do tej kolekcji
          */
-        //myList.add(new Object());
-
+//        myList.add(new Object());
+//
 //        for (Object obj :  myList) {
 //            System.out.println(obj);
 //        }
@@ -107,34 +99,47 @@ public class Main {
         /**
          * ale znowu problem - zadeklarowany w powyższy sposób są "read-only" :(
          */
-        //animals.add(new Dog());
-        //animals.add(new Animal());
-        addExtendedAnimals(animals);
-        addExtendedAnimals(dogsList);
-        addExtendedAnimals(terriers);
-        addExtendedAnimals(catsList);
+//        animals.add(new Dog());
+//        animals.add(new Animal());
+        /**
+         *
+         */
+//        addExtendedAnimals(animals);
+//        addExtendedAnimals(dogsList);
+//        addExtendedAnimals(terriers);
+//        addExtendedAnimals(catsList);
 
         /**
          * Jeśli potrzebujemy mieć możliwość, dodawania elementów do kolekcji
          * należy użyć słowa kluczowego super
          */
-        List<? super Animal>  otherAnimals = new ArrayList<Animal>();
-        List<? super Cat> otherCatsList = new ArrayList<Animal>();
-        List<? super Dog> otherDogsList = new ArrayList<Dog>();
-        List<? super Terrier> otherTerriers = new ArrayList<Terrier>();
+//        List<? super Animal>  otherAnimals = new ArrayList<Animal>();
+//        List<? super Cat> otherCatsList = new ArrayList<Animal>();
+//        List<? super Dog> otherDogsList = new ArrayList<Dog>();
+//        List<? super Terrier> otherTerriers = new ArrayList<Terrier>();
+        /**
+         *
+         */
 
-        otherTerriers.add(new Terrier());
-        otherAnimals.add(new Dog());
-        otherAnimals.add(new Cat());
-        otherCatsList.add(new Manx());
+//        otherTerriers.add(new Terrier());
+//        otherAnimals.add(new Dog());
+//        otherAnimals.add(new Cat());
+//        otherAnimals.add(new Terrier());
+//        otherCatsList.add(new Manx());
         //otherTerriers.add(new Dog()); // blad
 
+        /**
+         *
+         */
+//        NoiseRecorder<? extends Cat, ? extends Audio> catRecorder1= new NoiseRecorder<>();
+//        catRecorder.add(new Manx());
+//
+//        NoiseRecorder<? super Cat, ? extends Audio> catRecorder2= new NoiseRecorder<>();
+//        catRecorder.add(new Manx());
+//        catRecorder.add(new Terrier());
 
-
-        AnimalCollection<Cat, Audio> catsAnimalCollection = new AnimalCollection<>();
-        //AnimalCollection<Integer> someCollection = new AnimalCollection<>();//BŁĄD
-        catsAnimalCollection.add(new Cat());
-        //AnimalCollection<?,?>
+//        NoiseRecorder<Cat, Audio> recorder = new NoiseRecorder<>();
+//        recorder.recordOn(new Tape());
     }
 
     static void addExtendedAnimals(List<? extends Animal> list){
@@ -145,10 +150,10 @@ public class Main {
 //        for (Dog dog : list) {
 //            System.out.println(dog);
 //        }
-
-        for (Animal animal : list) {
-            System.out.println(animal);
-        }
+//
+//        for (Animal animal : list) {
+//            System.out.println(animal);
+//        }
     }
 
     static void addAnimal(List<Animal> animals){
